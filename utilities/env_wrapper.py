@@ -40,18 +40,18 @@ def worker(remote, parent_remote, env_fn_wrapper):
                              env.agents])
             else:
                 remote.send(['agent' for _ in env.agents])
-        elif cmd == 'A_Star_Info':#返回的信息包括（  智能体数量，障碍物数量，目标数量，智能体基础信息，障碍物基础信息，目标基础信息（位置，大小），智能体朝向角集合 ） !!!需要拿观测值作为障碍物和目标的基础信息，
-            agents_info = []
-            for agent in env.world.agents:
-                agents_info.append([agent.state.p_pos[0],agent.state.p_pos[1],agent.size])
-            obstacles_info = []
-            for i in env.world.num_obstacles:
-                obstacles_info.append([env.world.obstacles[i+env.world.num_obstacles].state.p_pos[0],env.world.obstacles[i+env.world.num_obstacles].state.p_pos[1],env.world.obstacles[i+env.world.num_obstacles].size])
-            landmarks_info = []
-            for i in env.world.num_landmarks:
-                landmarks_info.append([env.world.landmarks[i+env.world.num_landmarks].state.p_pos[0],env.world.landmarks[i+env.world.num_landmarks].state.p_pos[1],env.world.landmarks[i+env.world.num_landmarks].size])
-            A_Star_Info = np.concatenate([env.world.num_agents], [env.world.num_obstacles], [env.world.num_landmarks],agents_info,obstacles_info,landmarks_info,env.world.angle)
-            remote.send(A_Star_Info)
+        # elif cmd == 'A_Star_Info':#返回的信息包括（  智能体数量，障碍物数量，目标数量，智能体基础信息，障碍物基础信息，目标基础信息（位置，大小），智能体朝向角集合 ） !!!需要拿观测值作为障碍物和目标的基础信息，
+        #     agents_info = []
+        #     for agent in env.world.agents:
+        #         agents_info.append([agent.state.p_pos[0],agent.state.p_pos[1],agent.size])
+        #     obstacles_info = []
+        #     for i in env.world.num_obstacles:
+        #         obstacles_info.append([env.world.obstacles[i+env.world.num_obstacles].state.p_pos[0],env.world.obstacles[i+env.world.num_obstacles].state.p_pos[1],env.world.obstacles[i+env.world.num_obstacles].size])
+        #     landmarks_info = []
+        #     for i in env.world.num_landmarks:
+        #         landmarks_info.append([env.world.landmarks[i+env.world.num_landmarks].state.p_pos[0],env.world.landmarks[i+env.world.num_landmarks].state.p_pos[1],env.world.landmarks[i+env.world.num_landmarks].size])
+        #     A_Star_Info = np.concatenate([env.world.num_agents], [env.world.num_obstacles], [env.world.num_landmarks],agents_info,obstacles_info,landmarks_info,env.world.angle)
+        #     remote.send(A_Star_Info)
         else:
             raise NotImplementedError
 
@@ -136,11 +136,11 @@ class SubprocVecEnv(VecEnv):
             return bigimg
         else:
             raise NotImplementedError
-
-    def A_star_Info(self):
-        for remote in self.remotes:
-            remote.send(('A_star_Info', None))
-        return np.stack([remote.recv() for remote in self.remotes])
+    #
+    # def A_star_Info(self):
+    #     for remote in self.remotes:
+    #         remote.send(('A_star_Info', None))
+    #     return np.stack([remote.recv() for remote in self.remotes])
 
 
 class DummyVecEnv(VecEnv):

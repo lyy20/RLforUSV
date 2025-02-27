@@ -207,11 +207,11 @@ def main():
     if DNN == 'MADDPG':
             maddpg =   MADDPG(num_agents = num_agents, num_landmarks = num_landmarks, landmark_depth=landmark_depth,num_obstacles=num_obstacles,  discount_factor=GAMMA, tau=TAU, lr_actor=LR_ACTOR, lr_critic=LR_CRITIC, weight_decay=WEIGHT_DECAY, device = DEVICE, rnn = RNN, dim_1=DIM_1, dim_2=DIM_2)
     elif DNN == 'MATD3':
-            maddpg = MATD3_BC(num_agents = num_agents, num_landmarks = num_landmarks, landmark_depth=landmark_depth, discount_factor=GAMMA, tau=TAU, lr_actor=LR_ACTOR, lr_critic=LR_CRITIC, weight_decay=WEIGHT_DECAY, device = DEVICE, rnn = RNN, dim_1=DIM_1, dim_2=DIM_2)
+            maddpg = MATD3_BC(num_agents = num_agents, num_landmarks = num_landmarks, landmark_depth=landmark_depth,num_obstacles=num_obstacles, discount_factor=GAMMA, tau=TAU, lr_actor=LR_ACTOR, lr_critic=LR_CRITIC, weight_decay=WEIGHT_DECAY, device = DEVICE, rnn = RNN, dim_1=DIM_1, dim_2=DIM_2)
     elif DNN == 'MASAC':
-            maddpg =    MASAC(num_agents = num_agents, num_landmarks = num_landmarks, landmark_depth=landmark_depth, discount_factor=GAMMA, tau=TAU, lr_actor=LR_ACTOR, lr_critic=LR_CRITIC, weight_decay=WEIGHT_DECAY, device = DEVICE, rnn = RNN, alpha = ALPHA, automatic_entropy_tuning = AUTOMATIC_ENTROPY, dim_1=DIM_1, dim_2=DIM_2)
+            maddpg =    MASAC(num_agents = num_agents, num_landmarks = num_landmarks, landmark_depth=landmark_depth,num_obstacles=num_obstacles, discount_factor=GAMMA, tau=TAU, lr_actor=LR_ACTOR, lr_critic=LR_CRITIC, weight_decay=WEIGHT_DECAY, device = DEVICE, rnn = RNN, alpha = ALPHA, automatic_entropy_tuning = AUTOMATIC_ENTROPY, dim_1=DIM_1, dim_2=DIM_2)
     elif DNN == 'MAHRSAC':
-            maddpg =    MAHRSAC(num_agents = num_agents, num_landmarks = num_landmarks, landmark_depth=landmark_depth, discount_factor=GAMMA, tau=TAU, lr_actor=LR_ACTOR, lr_critic=LR_CRITIC, weight_decay=WEIGHT_DECAY, device = DEVICE, rnn = RNN, alpha = ALPHA, automatic_entropy_tuning = AUTOMATIC_ENTROPY, dim_1=DIM_1, dim_2=DIM_2)
+            maddpg =    MAHRSAC(num_agents = num_agents, num_landmarks = num_landmarks, landmark_depth=landmark_depth,num_obstacles=num_obstacles, discount_factor=GAMMA, tau=TAU, lr_actor=LR_ACTOR, lr_critic=LR_CRITIC, weight_decay=WEIGHT_DECAY, device = DEVICE, rnn = RNN, alpha = ALPHA, automatic_entropy_tuning = AUTOMATIC_ENTROPY, dim_1=DIM_1, dim_2=DIM_2)
     
     else:
         print('ERROR UNKNOWN DNN ARCHITECTURE')

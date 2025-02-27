@@ -23,7 +23,7 @@ class Network(nn.Module):
         # Linear NN layers
         if actor == True:
             # Recurrent NN layers (LSTM)
-            if self.rnn_active:
+            if self.rnn_active:#如果 rnn_active 为 True，则使用 LSTM 作为 RNN 层
                 # self.rnn = nn.RNN(input_size, rnn_hidden_size, rnn_num_layers, batch_first=True)
                 # self.rnn = nn.GRU(input_size, rnn_hidden_size, rnn_num_layers, batch_first=True)
                 self.rnn = nn.LSTM(input_size, rnn_hidden_size, rnn_num_layers, batch_first=True)

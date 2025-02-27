@@ -60,9 +60,9 @@ SCENARIO = tracking
 #Number of parallel environments
 parallel_envs = 1
 #Number of agents per environment
-num_agents = 2
+num_agents = 1
 #Number of landmarks (or targets) per environment
-num_landmarks = 2
+num_landmarks = 1
 #Number of obstacles per environment
 num_obstacles = 5
 #TARGET PARAMETERS
@@ -94,8 +94,8 @@ max_current_vel = 0.0003
 # NETWORK ARCHITECTURE
 ##################################################################
 #DNN network
-DNN = MADDPG
-#DNN = MATD3
+#DNN = MADDPG
+DNN = MATD3
 #DNN = MASAC
 #DNN = MAHRSAC
 
